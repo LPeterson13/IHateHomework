@@ -59,18 +59,20 @@ QuestionLoop(NumQues, Ans, reloads)
     itteration := 1     ;Itteration of quiz (Should be related to questions)
     while itteration <= NumQues{        ;while the question you are on is below or = to the total questions run loop
         
+        ;Says Select
         Text:="|<>*138$71.0000000000000000300000007U00C0000000zs00Q0000003vk00s00006060001k0000A0Q0003U0000M0s01y70T0DVz0k07yC1zVzjy1s0QCQ633U301y0kAsQ7C0600z3UNkkCM0A00T71nVkQk0M00DDzb3ztU0k00CQ0C60301U00Qs0QA0603000tk0sQ0C06003Vk1kM0Q0A0Dz1zlszsTsTUTs1z3kzkTkT000000000000000000000000000000000000000000000000000000000001"
         if (ok:=FindText(&X, &Y, 0, 0, A_ScreenWidth, A_ScreenHeight, 0, 0, Text))
-        {
+        {       ;If Select found Enter loop
+            ;Multi Choice Box
             Text:="|<>*224$35.000000Dzzzy0zzzzz3k000S70000CCzzzzQNzzzysnzzzxlbzzzvX0000760000CA0000QM0000sk0001lU0003X0000760000CA0000QM0000sk0001lU0003X0000760000CA0000QM0000sk0001lU0003X0000770000CD0000wDzzzzkDzzzzU3zzzk000000000000E"
             while (ok:=FindText(&X, &Y, 0, 0, A_ScreenWidth, A_ScreenHeight, 0, 0, Text))
             {
             Click X, Y
             }
         }
-        send "{Tab}"
+        send "{Tab}"        ;Clicks the submit button
         send "{Space}"
-        send "{Tab}"
+        send "{Tab}"        ;Clicks the continue button
         send "{Space}"
         }
         else{
@@ -85,8 +87,8 @@ QuestionLoop(NumQues, Ans, reloads)
                     send "{Down}"
                 default:
             }
-            send "{Space}"
-            send "{Tab}"
+            send "{Space}"  ;Clicks ANS
+            send "{Tab}"    ;Clicks continue
             send "{Space}"
             
             sleep 100       ;Let box appear on screen
@@ -103,8 +105,6 @@ QuestionLoop(NumQues, Ans, reloads)
         }
         itteration += 1
     }
-}
-
 AnweringLoop(NumQues, Ans)
 {
 
