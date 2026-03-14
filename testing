@@ -1,0 +1,16 @@
+#Requires AutoHotkey v2.0
+#Include Findtext.ahk
+Esc::ExitApp
+^+!s::{
+
+        Text:="|<>*138$71.0000000000000000300000007U00C0000000zs00Q0000003vk00s00006060001k0000A0Q0003U0000M0s01y70T0DVz0k07yC1zVzjy1s0QCQ633U301y0kAsQ7C0600z3UNkkCM0A00T71nVkQk0M00DDzb3ztU0k00CQ0C60301U00Qs0QA0603000tk0sQ0C06003Vk1kM0Q0A0Dz1zlszsTsTUTs1z3kzkTkT000000000000000000000000000000000000000000000000000000000001"
+        if (ok:=FindText(&X, &Y, 0, 0, A_ScreenWidth, A_ScreenHeight, 0, 0, Text))
+        {
+            Text:="|<>*217$17.0007zwTzss03U0600A00M00k01U0300600A00M00k01U0300600A00M00k01U0300600A00M00k01U03U07U07zy7zw004"
+            while (ok:=FindText(&X, &Y, 0, 0, A_ScreenWidth, A_ScreenHeight, 0, 0, Text))
+            {
+            Click X, Y
+            sleep 50
+            }
+        }
+}

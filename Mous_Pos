@@ -1,0 +1,3 @@
+MouseGetPos &Posx, &Posy
+MsgBox Posx " " Posy
+return
