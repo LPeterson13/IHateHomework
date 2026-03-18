@@ -67,7 +67,9 @@ QuestionLoop(NumQues, Ans, reloads)
             Text:="|<>*224$35.000000Dzzzy0zzzzz3k000S70000CCzzzzQNzzzysnzzzxlbzzzvX0000760000CA0000QM0000sk0001lU0003X0000760000CA0000QM0000sk0001lU0003X0000760000CA0000QM0000sk0001lU0003X0000770000CD0000wDzzzzkDzzzzU3zzzk000000000000E"
             while (ok:=FindText(&X, &Y, 0, 0, A_ScreenWidth, A_ScreenHeight, 0, 0, Text))
             {
-            Click X, Y
+            MultiBox := []                           ;Array for the Y value of the Multi Boxes          
+            MultiBox.push(Y)           
+
             }
         }
         send "{Tab}"        ;Clicks the submit button
