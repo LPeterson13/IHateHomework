@@ -78,14 +78,14 @@ QuestionLoop(NumQues, Ans, reloads)         ;This loop goes through each questio
         {
             send "{Tab}"        ;Moves to Keyboard Navagation
             send "{Tab}"        ;Move to Questions
-            switch reloads                  ;Checks which itteration were on to determine letter
+            switch reloads                  ;Checks which itteration were on to determine how many times down is pressed
             {
-                case 2:
+                case 2:             ;Selects B on relaod 2
                     send "{Down}"
-                case 3:
+                case 3:             ;Selects C on reload 3
                     send "{Down}"
                     send "{Down}"
-                default:
+                default:            ;Selects A on reload 1
             }
             send "{Space}"  ;Clicks ANS
             send "{Tab}"    ;Move to Continue/Checkmark
@@ -100,51 +100,64 @@ QuestionLoop(NumQues, Ans, reloads)         ;This loop goes through each questio
             else
             {
             }
-            send "{Tab}"
-            send "{Space}"
+            send "{Tab}"        ;Moves to Continue on popup explination screen
+            send "{Space}"      ;Click continue 
         }
         itteration += 1
     }
 }
 
-Multichoice()
+Multichoice()           ;Under Construction
 {
+                    ;I have no clue what to do about this multiple choice problem 
+                    ;I could have it try every option but that would take forever
+                    ;It also doesnt actually detect every multiple choice box meaning its near impossible to properly deal with it
+                    ;Solutions 
+                        ;1. Have a human input the correct ans
+                        ;2. Build an AI to figure out the correct Ans then have the program take the ans and input it
+
+                    ;Short term 
+                        ;Select 1 box (any box) then procide
+                        
     ;Multi Choice Box
     Text:="|<>*224$35.000000Dzzzy0zzzzz3k000S70000CCzzzzQNzzzysnzzzxlbzzzvX0000760000CA0000QM0000sk0001lU0003X0000760000CA0000QM0000sk0001lU0003X0000760000CA0000QM0000sk0001lU0003X0000770000CD0000wDzzzzkDzzzzU3zzzk000000000000E"
-    while (ok:=FindText(&X, &Y, 0, 0, A_ScreenWidth, A_ScreenHeight, 0, 0, Text))
-    {
-    MultiBox := []                           ;Array for the Y value of the Multi Boxes          
-    MultiBox.push(Y)  
+    while (ok:=FindText(&X, &Y, 0, 0, A_ScreenWidth, A_ScreenHeight, 0, 0, Text)){      ;Grab all the multibox cords
+    MultiBoxH := []                           ;Array for the Y value of the Multi Boxes          
+    MultiBoxH.push(Y)
     }
+    MultiBoxH.Sort()
+    MsgBox(MultiBoxH)
+                                ;Boxes need to be sorted to get the correct positions 
+
+
 }
 
 
-AnweringLoop(NumQues, Ans)
+AnweringLoop(NumQues, Ans)      ;Final loop that answers the questions
 {
 
-    itteration := 1     ;Itteration of quiz (Should be related to questions)
-    while itteration <= NumQues{        ;while the question you are on is below or = to the total questions run loop
-        
-        send "{Tab}"                    ;Question answering mechanism
-        send "{Tab}"
+    itteration := 1             ;Current question of the quiz
+    while itteration <= NumQues{            ;while the question you are on is below or = to the total questions run loop
+        send "{Tab}"        ;Moves to Keyboard Navagation
+        send "{Tab}"        ;Move to Questions
         switch Ans.Get(itteration)                  ;Checks which itteration were on to determine letter
             {
-            case 2:
-                send "{Down}"
-            case 3:
-                send "{Down}"
-                send "{Down}"
-            case 4:
+            case 2:                 ;Selects B if Ans array at itteration is 2
+                send "{Down}"       
+            case 3:                 ;Selects C if Ans array at itteration is 3
                 send "{Down}"
                 send "{Down}"
+            case 4:                 ;Selects D if Ans array at itteration is 4
                 send "{Down}"
-            default:
+                send "{Down}"
+                send "{Down}"
+            default:                ;Selects A if Ans array at itteration is 1
             }
-        send "{Space}"
-        send "{Tab}"
-        send "{Space}"
-        send "{Tab}"
-        send "{Space}"
+        send "{Space}"      ;Clicks ANS
+        send "{Tab}"        ;Move to Continue/Checkmark
+        send "{Space}"      ;Clicks continue
+        send "{Tab}"        ;Moves to Continue on popup explination screen
+        send "{Space}"      ;Click continue 
 
         sleep 100
         itteration += 1
